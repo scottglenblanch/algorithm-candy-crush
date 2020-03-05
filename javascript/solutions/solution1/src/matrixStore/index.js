@@ -1,14 +1,16 @@
+import { get } from 'lodash';
+
 const rowCount = 10;
 const colCount = 10;
 const matrix = getInitialMatrix();
 
 
-function getInitialMatrix () {
+function getInitialMatrix() {
   const matrix = [];
   for(let i = 0; i < rowCount; i++) {
     const row = [];
     for(let j = 0; j < colCount; j++) {
-      row[j] = getRandomCellValue();
+      row[j] = getRandomColorOption();
     }
     matrix.push(row)
   }
@@ -16,20 +18,19 @@ function getInitialMatrix () {
   return matrix;
 }
 
-function getRandomCellValue () {
-  const randomNum =  Math.floor(Math.random() * 10);
+function getRandomColorOption() {
+  const colorList = ['red', 'blue', 'green'];
+  const randomNum =  Math.floor(Math.random() * colorList.length);
 
-  if(randomNum > 6) {
-    return 'red-cell';
-  } else if (randomNum > 3) {
-    return 'blue-cell';
-  } else {
-    return 'white-cell';
-  }
+  return colorList[randomNum];
 }
 
+export const isCellValueExist = ({rowPos, colPos}) =>
+  matrix[rowPos] !== undefined && matrix[rowPos][colPos] !== undefined;
+
+
 export function getCellValue ({rowPos, colPos}) {
-  return matrix[rowPos][colPos];
+  return get(matrix, [rowPos, colPos], null);
 }
 export function getRowCount() {
   return rowCount;
@@ -38,5 +39,7 @@ export function getColCount () {
   return colCount;
 }
 export function setCellValue ({ rowPos, colPos, val }) {
-  matrix[rowPos][colPos] = val;
+  if(isCellValueExist({rowPos, colPos})) {
+    matrix[rowPos][colPos] = val;
+  }
 }

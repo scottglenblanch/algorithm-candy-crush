@@ -13,8 +13,11 @@ module.exports = {
     compress: true,
     port: 9000
   },
-  devtool: 'source-map',
+  devtool: false,
   plugins: [
+    new webpack.SourceMapDevToolPlugin({
+
+    }),
     new HtmlWebpackPlugin({template: './src/index.html'}),
   ],
   module: {

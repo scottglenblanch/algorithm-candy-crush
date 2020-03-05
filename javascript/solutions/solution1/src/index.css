@@ -3,9 +3,13 @@ body {
 
 }
 
+.grid-ctn {
+  width: 100%;
+}
+
 table {
   background: white;
-
+  margin: auto;
 }
 
 td {
@@ -15,10 +19,14 @@ td {
   border: 1px solid gray;
 }
 
-.blue-cell {
+[data-color="green"] {
+  background: green;
+}
+
+[data-color="blue"] {
   background: blue;
 }
 
-.red-cell {
+[data-color="red"] {
   background: red;
 }

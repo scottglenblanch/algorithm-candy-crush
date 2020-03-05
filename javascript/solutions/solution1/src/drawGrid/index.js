@@ -7,7 +7,7 @@ const getMatrixAsHtml = () => {
     html += '\n\t<tr>';
     for(let colPos = 0; colPos < getColCount(); colPos++) {
       const cellValue = getCellValue({rowPos, colPos});
-      html += `\n\t\t<td class="${cellValue}"></td>`
+      html += `\n\t\t<td data-rowPos="${rowPos}" data-colPos="${colPos}" data-color="${cellValue}"></td>`
     }
 
     html += '\n\t</tr>';
