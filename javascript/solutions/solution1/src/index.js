@@ -2,11 +2,11 @@ import './index.css';
 import drawGrid from './drawGrid';
 import bindClickEventsToGrid from './bindClickEventsToGrid';
 
-const runWhenDomLoaded = () => {
+function runWhenDomLoaded() {
   drawGrid();
   bindClickEventsToGrid();
-};
+}
 
-document.addEventListener("DOMContentLoaded", runWhenDomLoaded);
+window.addEventListener("DOMContentLoaded", runWhenDomLoaded);
 
 
